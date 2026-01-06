@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Portfolio</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing:border-box;
+        }
+        body{
+            background-color: #1e1e1e;
+            font-family:sans-serif;
+            color:#a0a0a0;
+            line-height:1.6;
+        }
+        .main-container{
+            display:grid;
+            max-width:1200px;
+            grid-template-columns: 350px 1fr;
+            gap:40px;
+            padding-top:40px;
+            margin:auto;
+        }
+        .sidebar{
+            height:90vh;
+            background-color: #2a2a2a;
+            border:1px solid #3a3a3a;
+            border-radius:16px;
+            padding:40px;
+            position:sticky;
+            top:40px;
+        }
+        .main-content{
+            background-color: #2a2a2a;
+            border:1px solid #3a3a3a;
+            border-radius:16px;
+            padding:40px;
+        }
+        .profile img{
+            height:120px;
+            width:120px;
+            border-radius:50%;
+            border:1px solid #3a3a3a;
+        }
+        .profile{
+            text-align:center;
+        }
+        .profile h2{
+            font-size:1.5rem;
+            font-weight:700;
+            margin-top:20px;
+            color:#e0e0e0;
+        }
+        .profile p{
+            background-color: #1e1e1e;
+            padding:5px 15px;
+            color:#FFBF00;
+            border:1px solid #3a3a3a;
+            font-size:0.8rem;
+            border-radius:8px;
+            display:inline-block;
+            margin-top:10px;
+        }
+        .contact{
+            margin-top:30px;
+            border-top:2px solid #3a3a3a;
+            padding-top:20px;
+        }
+        .label{
+            font-weight:500;
+            font-size:0.8rem;
+            color:#a0a0a0;
+        }
+        .value{
+            color:#e0e0e0;
+            text-decoration:none;
+        }
+        .email,.phone{
+            margin-bottom:15px;
+        }
+        .social{
+            margin-top:30px;
+            border-top:2px solid #3a3a3a;
+            padding-top:20px;
+            text-align:center;
+        }
+        .social img{
+            height:24px;
+            width:24px;
+            margin-left:5px;
+            filter: grayscale(1) invert(0.7);
+            transition: filter 0.3s ease;
+        }
+        .social img:hover{
+            filter: grayscale(0) invert(0);
+        }
+        #navigation{
+            border-bottom:2px solid #3a3a3a;
+            margin-bottom:20px;
+            padding-bottom:20px;
+        }
+        nav{
+            display:flex;
+            justify-content:flex-end;
+            gap:20px;
+        }
+        nav a{
+            text-decoration:none;
+            color:#a0a0a0;
+            font-weight:500;
+            transition:color 0.3s ease;
+        }
+        .active,nav a:hover{
+            color:#FFBF00;
+        }
+        .heading{
+            color:#e0e0e0;
+            font-size:2rem;
+            margin-bottom:15px;
+        }
+        .line{
+            width:60px;
+            height:5px;
+            background-color: yellow;
+            margin-bottom:15px;
+        }
+        .content{
+            color:#a0a0a0;
+            text-align:justify;
+        }
+        #about{
+            margin-bottom:40px;
+        }
+        .grid-container{
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+            gap:30px;
+        }
+        .item img{
+            height:48px;
+            width:48px;
+            filter:invert(75%) sepia(50%) saturate(1000%) hue-rotate(350deg) brightness(110%) contrast(101%);
+            margin-bottom:15px;
+        }
+        .item{
+            padding:20px;
+            border-radius:10px;
+            border:2px solid #3a3a3a;
+            background-color: #1e1e1e;
+            text-align:center;
+            margin-top:20px;
+            transition:transform 0.3s ease, boxshadow 0.3s ease;
+        }
+        .item h3{
+            font-size:1rem;
+            font-weight:500;
+        }
+        .item:hover{
+            transform:scale(1.1);
+            box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        }
+        #education{
+            margin-top:30px;
+        }
+        .edtech{
+            position:relative;
+            margin-top:20px;
+        }
+        .year{
+            font-size:0.9rem;
+            color:#a0a0a0;
+            margin-bottom:5px;
+        }
+        .degree{
+            color:#e0e0e0;
+            font-size:1.2rem;
+            font-weight:500;
+            margin-bottom:5px;
+        }
+        .college{
+            font-style:italic;
+            color:#a0a0a0;
+            margin-bottom:10px;
+        }
+        .work{
+            color:#a0a0a0;
+        }
+        .edfirst,.edsecond{
+            margin-bottom:30px;
+            padding-left:25px;
+            position:relative;
+        }
+        .goal{
+            height:15px;
+            width:15px;
+            border-radius:50%;
+            border:5px solid #FFBF00;
+            position:absolute;
+            top:0px;
+            left:0px;
+            z-index:5;
+        }
+        .liner{
+            position:absolute;
+            width:2px;
+            top:0px;
+            bottom:0px;
+            left:5px;
+            border:2px solid #3a3a3a;
+        }
+        .project-container{
+            margin-top: 30px;
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            gap:25px;
+        }
+        .project{
+            background-color: #1e1e1e;
+            border-radius:12px;
+            border:1px solid #3a3a3a;
+            overflow:hidden;
+            transition: transform 0.5s ease,box-shadow 0.5 ease;
+        }
+        .project:hover{
+            transform:translateY(-10px);
+            box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.3);
+        }
+        .project img{
+            height:180px;
+            width:100%;
+            object-fit:cover;
+        }
+        .card{
+            padding:20px;
+        }
+        .card h3{
+            color:#e0e0e0;
+            margin-bottom:10px;
+        }
+        .card p{
+            color:#a0a0a0;
+            line-height:1.6;
+            margin-bottom:15px;
+        }
+        .card span{
+            background-color: rgba(255,191,0,0.1);
+            color:#FFBF00;
+            padding:4px 8px;
+            border-radius:5px;
+            font-size:0.75rem;
+            margin-right:5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="./pic.jpg" alt="">
+                <h2>Aditi Dubey</h2>
+                <p>Frontend Developer</p>
+            </div>
+            <div class="contact">
+                <div class="email">
+                    <h3 class="label">Email</h3>
+                    <a href="mailto:aditi@gmail.com" class="value">aditi@gmail.com</a>
+                </div>
+                <div class="phone">
+                    <h3 class="label">Phone</h3>
+                    <a href="tel:8844556690" class="value">8844556690</a>
+                </div>
+                <div class="location">
+                    <h3 class="label">Location</h3>
+                    <p class="value">Dwarka,Delhi</p>
+                </div>
+            </div>
+            <div class="social">
+                <a href="#"><img src="https://simpleicons.org/icons/x.svg" alt=""></a>
+                <a href="#"><img src="https://simpleicons.org/icons/git.svg" alt=""></a>
+                <a href="#"><img src="https://www.svgrepo.com/show/144030/linkedin-square-logo.svg" alt=""></a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="navigation">
+                <nav>
+                    <a href="#about" class="active">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#education">Education</a>
+                    <a href="#portfolio">Portfolio</a>
+                </nav>            
+            </div>
+
+            <div id="about">
+                <h2 class="heading">About Me</h2>
+                <div class="line"></div>
+                <p class="content">I am a student web developer with a strong interest in front-end development.
+I have hands-on experience with HTML and CSS and enjoy designing responsive and visually appealing websites.
+I am continuously learning new technologies to improve my development skills.I’m always excited to learn, grow, and work on meaningful projects.</p>
+            </div>
+
+            <div id="skills">
+                <h2 class="heading">Skills</h2>
+                <div class="line"></div>
+                <div class="grid-container">
+                    <div class="item">
+                        <img src="https://simpleicons.org/icons/html5.svg" alt="">
+                        <h3>HTML5</h3>
+                    </div>
+                    <div class="item">
+                        <img src="https://simpleicons.org/icons/css.svg" alt="">
+                        <h3>CSS3</h3>
+                    </div>
+                    <div class="item">
+                        <img src="https://simpleicons.org/icons/javascript.svg" alt="">
+                        <h3>Javascript</h3>
+                    </div>
+                    <div class="item">
+                        <img src="https://simpleicons.org/icons/react.svg" alt="">
+                        <h3>React</h3>
+                    </div>
+                    <div class="item">
+                        <img src="https://simpleicons.org/icons/git.svg" alt="">
+                        <h3>Git & Github</h3>
+                    </div>
+                    <div class="item">
+                        <img src="https://simpleicons.org/icons/typescript.svg" alt="">
+                        <h3>Typescript</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div id="education">
+                <h2 class="heading">Education</h2>
+                <div class="line"></div>
+                <div class="edtech">
+                    <div class="edfirst">
+                        <div class="year">2024-2028</div>
+                        <h3 class="degree">Bachelors Of Technology in CSE</h3>
+                        <p class="college">Vellore Institute of Technology Vellore</p>
+                        <p class="work">I am pursuing my BTech degree at VIT Vellore, where I am developing a strong foundation in engineering principles and problem-solving. Through coursework and practical projects, I am gaining hands-on experience in programming, web development, and logical thinking. My learning at VIT has helped me improve my technical skills, teamwork, and ability to adapt to new technologies.</p>
+                        <div class="goal"></div>
+                    </div>
+                    <div class="edsecond">
+                        <div class="year">2022-2024</div>
+                        <h3 class="degree">High School</h3>
+                        <p class="college">Center Point School Nagpur</p>
+                        <p class="work">After completing 12th standard, I developed a strong academic foundation, improved analytical thinking, and gained basic technical and communication skills. This stage prepared me for higher education and helped me understand my interests and career goals.</p>
+                        <div class="goal"></div>
+                    </div>
+                    <div class="liner"></div>
+                </div>
+            </div>
+
+            <div id="portfolio">
+                <h2 class="heading">Portfolio</h2>
+                <div class="line"></div>
+                <div class="project-container">
+                    <div class="project">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDtRmbSurJ0_ITvQxh6xOVLxUaEFXz2DCIqQ&s" alt="">
+                        <div class="card">
+                            <h3>E-Commerce Website</h3>
+                            <p>An e-commerce website allows users to buy and sell products or services online through a secure and user-friendly platform.</p>
+                            <span>HTML</span><span>CSS</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        <div class="card">
+                            <h3>Business Landing Page</h3>
+                            <p>A sleek,single-page site for a corporate client to generate leads.</p>
+                            <span>HTML</span><span>CSS</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="https://img.freepik.com/premium-photo/creative-concept-wireless-technology-modern-laptop-background-big-data-database-concept-multiexposure_258654-36504.jpg?semt=ais_hybrid&w=740&q=80" alt="">
+                        <div class="card">
+                            <h3>Analytics Dashboard UI</h3>
+                            <p>A data visualization dashboard UI created with CSS Grid.</p>
+                            <span>HTML</span><span>CSS</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <img src="https://thumbs.dreamstime.com/b/books-library-greeting-card-design-vector-illustration-books-library-greeting-card-design-126287570.jpg" alt="">
+                        <div class="card">
+                            <h3>Personal Blog Theme</h3>
+                            <p>A personal blog theme focuses on sharing thoughts, experiences, and ideas in a clean and visually appealing layout.</p>
+                            <span>HTML</span><span>CSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
